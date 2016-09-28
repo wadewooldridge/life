@@ -1,0 +1,28 @@
+/* lifestyle.css -- CSS layout for Wade's Life program. */
+/* Copyright (C) 2016 Wade R. Wooldridge. All rights reserved. */
+
+/* Formatting specific to the "controls" panel. */
+#controls {
+}
+
+/* Formatting specific to the "graph" panel. */
+#graph {
+}
+
+/* Formatting specific to the "world" panel. */
+#world {
+}
+
+#world-table td {
+    height: 12px;
+    width: 12px;
+    border: 1px solid lightgray;
+    font-family: "Courier New";
+    font-size: 10px;
+    margin: 0;
+    padding: 0;
+}
+
+.table-responsive {
+    border: 1px solid black;
+}
