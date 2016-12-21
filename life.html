@@ -2,29 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Life 0.1</title>
+    <title>Life 0.2</title>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <!-- Question: should my external JavaScript come first, or external stylesheet? Answer: CSS before JavaScript. -->
-    <!-- Question: can/should these all be named life.html, life.css, life.js, or should they be separate? -->
-    <script src="lifecode.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+
     <link rel="stylesheet" href="lifestyle.css">
+    <script src="lifecode.js"></script>
 </head>
-<body onload="onBodyLoad();">
+<body>
 <div class="col-xs-12 col-sm-3 panel-group">
     <div class="panel panel-primary">
         <div class="panel-heading">Controls</div>
         <div class="panel-body" id="controls">
             <h3>World Size:</h3>
             <form>
-                <p id="col-count-paragraph">Column count: 20</p>
-                <input type="range" id="col-count-range" min="10" max="40" value="20" onchange="onColCountChange()">
+                <p id="col-count-paragraph"></p>
+<!--                <p id="col-count-paragraph">Column count: 20</p> -->
+<!--                <input type="range" id="col-count-range" min="10" max="100" value="20" onchange="onColCountChange()"> -->
+                <input type="range" id="col-count-range">
                 <br>
                 <p id="row-count-paragraph">Row count: 20</p>
-                <input type="range" id="row-count-range" min="10" max="40" value="20" onchange="onRowCountChange()">
+                <input type="range" id="row-count-range" min="10" max="100" value="20" onchange="onRowCountChange()">
             </form>
             <hr>
             <h3>World Fill:</h3>

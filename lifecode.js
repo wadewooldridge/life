@@ -1,17 +1,19 @@
 /**
  *  lifecode.js
- *      JavaScript code for life 0.1.
+ *      JavaScript code for life 0.2.
  *      Copyright (C) 2016 Wade R. Wooldridge.
  *      All rights reserved.
  */
 
 /* Constants. */
-/* Question: do you normally define constants in JavaScript? */
-var MIN_COL_COUNT = 10;
-var MAX_COL_COUNT = 40;
-var MIN_ROW_COUNT = 10;
-var MAX_ROW_COUNT = 40;
+var MIN_COL_COUNT =  10;
+var DEF_COL_COUNT =  20;
+var MAX_COL_COUNT = 100;
+var MIN_ROW_COUNT =  10;
+var DEF_ROW_COUNT =  20;
+var MAX_ROW_COUNT = 100;
 var MIN_STEP_DELAY = 0.0;
+var DEF_STEP_DELAY = 0.5;
 var MAX_STEP_DELAY = 2.0;
 
 var ALIVE_COLOR = "darkblue";
@@ -19,14 +21,13 @@ var DEAD_COLOR = "white";
 
 var PATTERNS = [];
 
-/* Question: Better to have multiple globals, or put them in a global settings object? */
 /* Global data. */
-var gColCount = 20;
-var gRowCount = 20;
+var gColCount = DEF_COL_COUNT;
+var gRowCount = DEF_ROW_COUNT;
 var gWorldWraps = true;
 var gStopOnEmptyWorld = true;
 var gStepCount = 0;
-var gStepDelay = 1.0;
+var gStepDelay = DEF_STEP_DELAY;
 var gRunning = false;
 var gStartButtonColor = "";
 var gTimer = 0;
@@ -36,20 +37,25 @@ var gTimer = 0;
     instead of an array of two-number coordinates. */
 var gaWorld = [];
 
-/* Initial setup of controls. */
-/* Question: Is it typical to set these to default values, or do we just have to make sure the default
-   value in the code matches the default value in the HTML creation of the element? */
-console.log("Setting initial values of controls.");
-
-console.log("Done setting initial values of controls.");
-
 /* Initial setup of world; needs to happen after body load to allow access to all elements. */
 /* Question: Is this the best practice mechanism to do this, for example, for setting the size of the world-table? */
-function onBodyLoad() {
+$(document).ready(function(){
+    console.log('Document ready: perfoming setup.');
     rebuildWorld();
     PATTERNS = [BLOCK, BEEHIVE, LOAF, BOAT, BLINKER, TOAD, BEACON, GLIDER, LWSS];
 
-}
+    /* Set up column count and row count range inputs. */
+    var colCountRange = $("#col-count-range")/*.attr({
+        min: MIN_COL_COUNT,
+        max:
+    });*/
+    colCountRange.attr('min',MIN_COL_COUNT);
+    colCountRange.max = MAX_COL_COUNT;
+    colCountRange.val(DEF_COL_COUNT);
+    colCountRange.change(onColCountChange);
+    onColCountChange();
+
+});
 
 /* Callback handlers for controls. */
 function onClearButton() {
