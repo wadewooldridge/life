@@ -7,10 +7,10 @@
 
 /* Constants. */
 var MIN_COL_COUNT =  10;
-var DEF_COL_COUNT =  20;
+var DEF_COL_COUNT =  40;
 var MAX_COL_COUNT = 100;
 var MIN_ROW_COUNT =  10;
-var DEF_ROW_COUNT =  20;
+var DEF_ROW_COUNT =  40;
 var MAX_ROW_COUNT = 100;
 var MIN_STEP_DELAY = 0.0;
 var DEF_STEP_DELAY = 0.5;
@@ -38,23 +38,10 @@ var gTimer = 0;
 var gaWorld = [];
 
 /* Initial setup of world; needs to happen after body load to allow access to all elements. */
-/* Question: Is this the best practice mechanism to do this, for example, for setting the size of the world-table? */
 $(document).ready(function(){
     console.log('Document ready: perfoming setup.');
     rebuildWorld();
     PATTERNS = [BLOCK, BEEHIVE, LOAF, BOAT, BLINKER, TOAD, BEACON, GLIDER, LWSS];
-
-    /* Set up column count and row count range inputs. */
-    var colCountRange = $("#col-count-range")/*.attr({
-        min: MIN_COL_COUNT,
-        max:
-    });*/
-    colCountRange.attr('min',MIN_COL_COUNT);
-    colCountRange.max = MAX_COL_COUNT;
-    colCountRange.val(DEF_COL_COUNT);
-    colCountRange.change(onColCountChange);
-    onColCountChange();
-
 });
 
 /* Callback handlers for controls. */
@@ -195,7 +182,6 @@ function startRunning() {
         console.log("startRunning: starting.");
         /* Change the color and text of the start/stop button. */
         var elem = document.getElementById("btn_start_stop");
-        /* Question: Is there a better way to save and restore the original Bootstrap color? */
         gStartButtonColor = elem.style.backgroundColor;         // Save Bootstrap's color.
         elem.style.backgroundColor = "red";
         elem.innerHTML = "Stop";
@@ -234,7 +220,6 @@ function stopRunning() {
     }
 }
 
-/* Question: Typical format of function headers? */
 /* World setup: rebuild the world based on the existing parameters.
 *       Note that this builds an empty world-table, and its values will be filled later.
 *       This can be called during page load, or any time a world size or wrap value is changed.
@@ -243,8 +228,6 @@ function rebuildWorld() {
     console.log("rebuildWorld: ", gColCount, "x", gRowCount, ": wrap=", gWorldWraps);
 
     /* Delete all world data. */
-    /* Question: Is this sufficient to free allocated memory, or is there a better way? */
-    /* Question: Should this be pre-allocated as Array(rowCount * colCount)? */
     gaWorld = [];
 
     /* Populate an object for each cell with the basic fields. */
@@ -265,7 +248,6 @@ function rebuildWorld() {
         worldTable.deleteRow(rowNum);
     }
 
-    /* Question: Are there issues about duplicate declarations of variables? */
     /* Populate the world-table rows and columns. */
     for (rowNum = 0; rowNum < gRowCount; rowNum++) {
         console.log("Building row ", rowNum);
@@ -287,7 +269,6 @@ function rebuildWorld() {
     on non-corner edges, and eight neighbors for center cells.  Doing all of these checks now to build the 
     neighbors array saves having to do the checks during step processing. */
 function buildNeighborArray(rowNum, colNum) {
-    /* Question: Is there any performance advantage to "loading" local variables? */
     var wrap = gWorldWraps;
     var neighbors = [];
     var rows = [rowNum];        // Current row is always valid.

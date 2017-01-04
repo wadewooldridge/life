@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Life 0.2</title>
+    <title>Life</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -21,13 +21,11 @@
         <div class="panel-body" id="controls">
             <h3>World Size:</h3>
             <form>
-                <p id="col-count-paragraph"></p>
-<!--                <p id="col-count-paragraph">Column count: 20</p> -->
-<!--                <input type="range" id="col-count-range" min="10" max="100" value="20" onchange="onColCountChange()"> -->
-                <input type="range" id="col-count-range">
+                <p id="col-count-paragraph">Column count: 40</p>
+                <input type="range" id="col-count-range" min="10" max="100" value="40" onchange="onColCountChange()">
                 <br>
-                <p id="row-count-paragraph">Row count: 20</p>
-                <input type="range" id="row-count-range" min="10" max="100" value="20" onchange="onRowCountChange()">
+                <p id="row-count-paragraph">Row count: 40</p>
+                <input type="range" id="row-count-range" min="10" max="100" value="40" onchange="onRowCountChange()">
             </form>
             <hr>
             <h3>World Fill:</h3>
@@ -42,8 +40,6 @@
             <div class="form">
                 <div class="form-group">
                     <div class="checkbox">
-                        <!-- Question: several examples show an "output" connected to an "input". Is that a standard
-                             practice that I should be using here, instead of directly reading the input? -->
                         <label><input type="checkbox" checked onchange="onWorldWrapsChange()"> World wraps at edges.</label>
                     </div>
                 </div>
@@ -61,7 +57,6 @@
                 <p id="step-delay-paragraph">Step delay seconds: 1</p>
                 <input type="range" id="step-delay-range" min="0" max="2.0" value="1.0" step="0.1" onchange="onStepDelayChange()">
                 <br>
-                <!-- Question: Underscores or dashes or both? -->
                 <button type="button" class="btn btn-success btn-block" id="btn_start_stop" onclick="onStartStopButton()">Start</button>
             </div>
         </div>
